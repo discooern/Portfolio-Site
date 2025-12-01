@@ -5,7 +5,7 @@
             <h2 class="font-bold text-xl text-[--color-accent] !m-0">Our Portfolio Site</h2>
         </div>
         <div class="w-[100%] h-[40px] bg-[--color-secondary] px-[1rem]">
-            <a v-for="item in store.articles" href="stuff" class="mx-[.5em]">{{ item }}</a>
+            <nuxt-link v-for="item in store.routes" :to="item.slug" class="mx-[.5em]">{{ item.title }}</nuxt-link>
         </div>
     </header>
 </template>
