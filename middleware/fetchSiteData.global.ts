@@ -16,22 +16,23 @@ export default defineNuxtRouteMiddleware(async (to: any) => {
     // Store
     const store: any = useMainStore();
 
-    const config = useRuntimeConfig();
+    // const config = useRuntimeConfig();
 
     if (import.meta.server) {
-        store.setConfig({
-            apiBaseurl: config.apiBaseurl,
-            // xApiKey: config.xApiKey,
-        });
+        // store.setConfig({
+        //     apiBaseurl: config.apiBaseurl,
+        //     // xApiKey: config.xApiKey,
+        // });
+
+		let routes = await contentService.getRoutes();
+		store.routes = routes;
     }
 
-    if (import.meta.client) {
-        const slug = to.params?.slug;
+	const slug = to.params?.slug;
 
-        if (slug) {
-            var page = await contentService.getPage(slug);
-            store.currentPage = page;
-            console.log("page", page);
-        }
-    }
+	if (slug) {
+		var page = await contentService.getPage(slug);
+		store.currentPage = page;
+		console.log("page", page);
+	}
 });

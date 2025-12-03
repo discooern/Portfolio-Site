@@ -10,10 +10,11 @@ export default class ProductService {
     contentHelper: ContentHelper = new ContentHelper;
 
     async getPage(slug: string): Promise<any> {
+		console.log(slug);
         try {
-            const response = await axios.get<any>(`${this.store.apiBaseurl}/content/getPage`, {
+            const response = await axios.get<any>(`${this.store.apiBaseurl}/blogposts/slug`, {
                 params: {
-                    slug: JSON.stringify(slug)
+                    slug: slug
                 },
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,13 +30,13 @@ export default class ProductService {
 
      async getRoutes(): Promise<Array<any>> {
         try {
-            const response = await axios.get<Array<any>>(`${this.store.apiBaseurl}/content/getRoutes`, {
+            const response = await axios.get<Array<any>>(`${this.store.apiBaseurl}/blogposts/routes`, {
                 headers: {
                     'Content-Type': 'application/json',
                     // 'X-API-Key': this.store.xApiKey
                 }
             });
-
+			
             if (response.data) {
                 var mappedData = this.contentHelper.mapRouteModelList(response.data)
 
@@ -44,7 +45,7 @@ export default class ProductService {
 
             return response.data;
         } catch (error) {
-            throw new Error('Error fetching page: ' + error);
+            throw new Error('Error fetching routes: ' + error);
         }
     }
 }
