@@ -1,9 +1,8 @@
 <template>
-
-  <body>
+  <body class="min-h-[100vh]">
     <div class="flex flex-col justify-between">
       <PageHeader></PageHeader>
-      <main class="max-w-[80vw] mx-auto">
+      <main class="min-h-[100vh] w-[70vw] max-w-[1000px] flex self-center">
         <NuxtLayout>
           <NuxtPage>
 
@@ -23,7 +22,7 @@ import PageHeader from './components/PageHeader.vue';
 import PageFooter from './components/PageFooter.vue';
 
 export default defineComponent({
-  name: 'HomePage',
+  name: 'app',
   components: { PageHeader, PageFooter },
 })
 </script>

@@ -1,16 +1,16 @@
 <template>
-    <div class="page w-[90vw] max-w-[1000px]">
-        <div v-for="item in props.blogPost.content" v-html="item"></div>
+    <div v-if="store.currentPage && store.currentPage.content" class="page">
+        <div v-for="item in store.currentPage.content" v-html="contentHelper.quillDeltaToHtml(store?.currentPage?.content)"></div>
     </div>
 </template>
 
 <script setup lang="ts">
-    // Models
-    import type BlogPost from '../types/blogPost';
+    import { useMainStore } from '../stores/store';
 
-    interface Props {
-        blogPost: BlogPost
-    }
+    // Helpers
+    import ContentHelper from '../helpers/contentHelper';
 
-    const props = defineProps<Props>();
+    const contentHelper: ContentHelper = new ContentHelper;
+
+    const store = useMainStore();
 </script>

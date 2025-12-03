@@ -2,6 +2,6 @@ export default interface BlogPost {
     id: string;
     title: string;
     slug: string;
-    content: any[];
+    content: any;
     summary: string;
 }

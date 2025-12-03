@@ -22,6 +22,12 @@ export default class ProductService {
                 }
             });
 
+            if (response.data) {
+                var result = this.contentHelper.mapPageModel(response.data)
+
+                return result;
+            }
+
             return response.data;
         } catch (error) {
             throw new Error('Error fetching page: ' + error);
