@@ -3,6 +3,7 @@ import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 // Models
 import type RouteModel from '../types/route';
 import type BlogPostModel from '~/types/blogPost';
+import Quill from 'quill';
 
 export default class ContentHelper {
     mapRouteModelList(data: any): RouteModel[] {
@@ -40,15 +41,4 @@ export default class ContentHelper {
         return result;
     }
 
-    quillDeltaToHtml(delta: any): string {
-        const ops = delta.ops || delta;
-        var cfg = {};
-        var converter = new QuillDeltaToHtmlConverter(ops, cfg);
-        var html = converter.convert();
-
-        console.log("stuff", delta);
-        console.log("html", html);
-
-        return html;
-    }
 }

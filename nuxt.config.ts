@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   css: [
-    '../assets/style/main.scss'
+    '../assets/style/main.scss',
+	'quill/dist/quill.snow.css',
+    'quill/dist/quill.core.css',
+	'highlight.js/styles/atom-one-dark.css'
   ],
 })
